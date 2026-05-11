@@ -12,7 +12,7 @@ fs.mkdirSync(DATA_DIR, { recursive: true });
 const DB_PATH = path.join(DATA_DIR, 'avprop.db');
 
 const db = new sqlite3.Database(DB_PATH);
-db.pragma('journal_mode = WAL');
+db.exec("PRAGMA journal_mode = WAL;");
 db.exec(`CREATE TABLE IF NOT EXISTS kv_store (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL,
